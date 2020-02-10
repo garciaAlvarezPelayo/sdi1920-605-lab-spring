@@ -1,6 +1,11 @@
 package com.uniovi.entities;
 
+import javax.persistence.*;
+
+@Entity
 public class Teacher {
+	@Id
+	@GeneratedValue
 	private String dni;
 	private String name;
 	private String surname;
