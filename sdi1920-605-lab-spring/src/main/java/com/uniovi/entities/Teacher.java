@@ -2,10 +2,12 @@ package com.uniovi.entities;
 
 import javax.persistence.*;
 
+import org.hibernate.annotations.GenericGenerator;
+
 @Entity
 public class Teacher {
-	@Id
-	@GeneratedValue
+	@Id @GeneratedValue(generator="system-uuid")
+	@GenericGenerator(name="system-uuid", strategy = "uuid")
 	private String dni;
 	private String name;
 	private String surname;
