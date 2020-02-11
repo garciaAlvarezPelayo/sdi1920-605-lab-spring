@@ -298,3 +298,33 @@ DISCONNECT
 DISCONNECT
 /*C222*/SET SCHEMA PUBLIC
 DISCONNECT
+/*C223*/SET SCHEMA PUBLIC
+drop table if exists mark CASCADE 
+drop table if exists teacher CASCADE 
+drop sequence hibernate_sequence if exists
+create sequence hibernate_sequence start with 1 increment by 1
+create table mark (id bigint not null, description varchar(255), score double, primary key (id))
+create table teacher (dni varchar(255) not null, category varchar(255), name varchar(255), surname varchar(255), primary key (dni))
+INSERT INTO TEACHER VALUES('4028b881702fd76201702fd7b6790000','1','Pelayo Garc\u00eda \u00c1lvarez','1')
+COMMIT
+DELETE FROM TEACHER WHERE DNI='4028b881702fd76201702fd7b6790000'
+COMMIT
+/*C226*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C231*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C223*/DISCONNECT
+/*C232*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C224*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C225*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C227*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C230*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C228*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C229*/SET SCHEMA PUBLIC
+DISCONNECT
