@@ -11,27 +11,27 @@
 		</div>
 		<div class="collapse navbar-collapse" id="myNavbar">
 			<ul class="nav navbar-nav">
-			<li><a href="/">Home</a></li>
+			<li><a href="/" th:text="#{home.message}">Home</a></li>
 			<li id="marks-menu" class="dropdown">
-				<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+				<a class="dropdown-toggle" data-toggle="dropdown" href="#" th:text="#{gestionNotas}">
 					Gestion de Notas <span class="caret"></span>
 				</a>
 				<ul class="dropdown-menu">
-					<li><a href="/mark/add">Agregar Nota</a></li>
+					<li><a href="/mark/add" th:text="#{agregarNota}">Agregar Nota</a></li>
 					<li><a href="/mark/list">Ver Notas</a></li>
 				</ul>
 			</li>
 			<li id="users-menu" class="dropdown">
-				<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+				<a class="dropdown-toggle" data-toggle="dropdown" href="#" th:text="#{gestionUsuarios}">
 					Gestion de Usuarios <span class="caret"></span>
 				</a>
 				<ul class="dropdown-menu">
-					<li><a href="/user/add">Agregar usuario</a></li>
-					<li><a href="/user/list">Ver usuarios</a></li>
+					<li><a href="/user/add" th:text="#{agregarUsuario}">Agregar usuario</a></li>
+					<li><a href="/user/list" th:text="#{verUsuarios}">Ver usuarios</a></li>
 				</ul>
 			</li>
-				<li class="active"><a href="/teacher/list">Ver Profesores</a></li>
-				<li><a href="/teacher/add">Agregar Profesor</a></li>
+				<li class="active"><a href="/teacher/list" th:text="#{verProfesores}">Ver Profesores</a></li>
+				<li><a href="/teacher/add" th:text="#{agregarProfesor}">Agregar Profesor</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown"><a id="btnLanguage" href="#"
@@ -49,6 +49,11 @@
 								th:src="@{/img/if_spain_flag.png}"
 								style="border: 0; float: left; margin-right: 15px" /> <span
 								th:text="#{language.es}">Español</span>
+						</a></li>
+						<li><a id="btnFrench" value="FR"> <img
+								th:src="@{/img/if_spain_flag.png}"
+								style="border: 0; float: left; margin-right: 15px" /> <span
+								th:text="#{language.fr}">Francia</span>
 						</a></li>
 					</ul></li>
 
