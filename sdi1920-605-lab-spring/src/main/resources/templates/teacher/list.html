@@ -9,17 +9,17 @@
 
 
 	<div class="container">
-		<h2>Profesores</h2>
-		<p>Los profesores que actualmente figuran en el sistema son las
+		<h2 th:text="#{profesores}">Profesores</h2>
+		<p th:text="#{listadoProfesoresSubTexto}">Los profesores que actualmente figuran en el sistema son las
 			siguientes:</p>
 		<div class="table-responsive">
 			<table class="table table-hover">
 				<thead>
 					<tr>
 						<th class="col-md-1">id</th>
-						<th>Nombre</th>
-						<th>Apellidos</th>
-						<th>Categoria</th>
+						<th th:text="#{nombre}">Nombre</th>
+						<th th:text="#{apellidos}">Apellidos</th>
+						<th th:text="#{categoria}">Categoria</th>
 						<th class="col-md-1"></th>
 						<th class="col-md-1"></th>
 						<th class="col-md-1"></th>
@@ -31,7 +31,7 @@
 						<td th:text="${teacher.name}">1</td>
 						<td th:text="${teacher.surname}">1</td>
 						<td th:text="${teacher.category}">1</td>
-						<td><a th:href="${'/teacher/delete/' + teacher.dni}">eliminar</a></td>
+						<td><a th:href="${'/teacher/delete/' + teacher.dni}" th:text="#{eliminar}">eliminar</a></td>
 					</tr>
 				</tbody>
 			</table>
