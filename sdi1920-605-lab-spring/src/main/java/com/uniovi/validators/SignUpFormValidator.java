@@ -1,5 +1,6 @@
 package com.uniovi.validators;
 
+import com.uniovi.entities.Mark;
 import com.uniovi.entities.User;
 import com.uniovi.services.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;

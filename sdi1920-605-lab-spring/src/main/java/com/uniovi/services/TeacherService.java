@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.uniovi.entities.Teacher;
+import com.uniovi.entities.User;
 import com.uniovi.repositories.TeacherRepository;
 @Service
 public class TeacherService {
@@ -39,5 +40,9 @@ public class TeacherService {
 	public void editTeacher(Teacher teacher, String dni2) {
 		deleteTeacher(dni2);
 		addTeacher(teacher);
+	}
+	
+	public Teacher getTeacherByDni(String dni) {
+		return teacherRepository.findByDni(dni);
 	}
 }
