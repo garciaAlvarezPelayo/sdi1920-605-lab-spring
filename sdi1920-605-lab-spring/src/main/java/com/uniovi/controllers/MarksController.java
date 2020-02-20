@@ -39,10 +39,10 @@ public class MarksController {
 	@RequestMapping(value = "/mark/add", method = RequestMethod.POST)
 	public String setMark(@Validated Mark mark, BindingResult result) {
 		marksValidator.validate(mark, result);
-		if(result.hasErrors()) {
+		if (result.hasErrors()) {
 			return "mark/add";
 		}
-		
+
 		marksService.addMark(mark);
 		return "redirect:/mark/list";
 	}
@@ -76,16 +76,28 @@ public class MarksController {
 	@RequestMapping(value = "/mark/edit/{id}", method = RequestMethod.POST)
 	public String setEdit(Model model, @PathVariable Long id, @Validated Mark mark, BindingResult result) {
 		marksValidator.validate(mark, result);
-		if(result.hasErrors()) {
+		if (result.hasErrors()) {
 			return getEdit(model, id);
 		}
-		
+
 		Mark original = marksService.getMark(id);
 		// modificar solo score y description
 		original.setScore(mark.getScore());
 		original.setDescription(mark.getDescription());
 		marksService.addMark(original);
 		return "redirect:/mark/details/" + id;
+	}
+
+	@RequestMapping(value = "/mark/{id}/resend", method = RequestMethod.GET)
+	public String setResendTrue(Model model, @PathVariable Long id) {
+		marksService.setMarkResend(true, id);
+		return "redirect:/mark/list";
+	}
+
+	@RequestMapping(value = "/mark/{id}/noresend", method = RequestMethod.GET)
+	public String setResendFalse(Model model, @PathVariable Long id) {
+		marksService.setMarkResend(false, id);
+		return "redirect:/mark/list";
 	}
 
 }
