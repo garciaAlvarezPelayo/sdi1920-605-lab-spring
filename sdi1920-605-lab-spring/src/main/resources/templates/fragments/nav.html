@@ -35,7 +35,7 @@
 					</ul></li>
 				<li class="active"><a href="/teacher/list"
 					th:text="#{verProfesores}">Ver Profesores</a></li>
-				<li><a href="/teacher/add" th:text="#{agregarProfesor}">Agregar
+				<li><a href="/teacher/add" th:text="#{agregarProfesor}" sec:authorize="hasRole('ROLE_ADMIN')">Agregar
 						Profesor</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
