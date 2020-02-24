@@ -104,7 +104,7 @@ public class UsersController {
 		return "users/login";
 	}
 
-	@RequestMapping(value = { "/login" }, method = RequestMethod.POST)
+	@RequestMapping(value = { "/home" }, method = RequestMethod.POST)
 	public String home(Model model) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String dni = auth.getName();
