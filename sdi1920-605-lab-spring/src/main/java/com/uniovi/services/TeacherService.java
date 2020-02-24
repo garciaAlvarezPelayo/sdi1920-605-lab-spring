@@ -8,6 +8,8 @@ import java.util.Optional;
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.uniovi.entities.Teacher;
@@ -19,10 +21,10 @@ public class TeacherService {
 	@Autowired
 	private TeacherRepository teacherRepository;
 
-	public List<Teacher> getTeachers() {
-		List<Teacher> marks = new ArrayList<Teacher>();
-		teacherRepository.findAll().forEach(marks::add);
-		return marks;
+	public Page<Teacher> getTeachers(Pageable pageable) {
+		Page<Teacher> teacher;
+		teacher = teacherRepository.findAll(pageable);
+		return teacher;
 	}
 
 	public Teacher getTeacher(String id) {

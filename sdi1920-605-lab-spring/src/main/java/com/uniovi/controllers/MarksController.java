@@ -79,24 +79,24 @@ public class MarksController {
 	}
 
 	@RequestMapping(value = "/mark/add")
-	public String getMark(Model model) {
+	public String getMark(Model model, Pageable pageable) {
 		model.addAttribute("mark", new Mark());
-		model.addAttribute("usersList", usersService.getUsers());
+		model.addAttribute("usersList", usersService.getUsers(pageable));
 		return "mark/add";
 	}
 
 	@RequestMapping(value = "/mark/edit/{id}")
-	public String getEdit(Model model, @PathVariable Long id) {
+	public String getEdit(Model model, @PathVariable Long id, Pageable pageable) {
 		model.addAttribute("mark", marksService.getMark(id));
-		model.addAttribute("usersList", usersService.getUsers());
+		model.addAttribute("usersList", usersService.getUsers(pageable));
 		return "mark/edit";
 	}
 
 	@RequestMapping(value = "/mark/edit/{id}", method = RequestMethod.POST)
-	public String setEdit(Model model, @PathVariable Long id, @Validated Mark mark, BindingResult result) {
+	public String setEdit(Model model, @PathVariable Long id, @Validated Mark mark, BindingResult result, Pageable pageable) {
 		marksValidator.validate(mark, result);
 		if (result.hasErrors()) {
-			return getEdit(model, id);
+			return getEdit(model, id, pageable);
 		}
 
 		Mark original = marksService.getMark(id);

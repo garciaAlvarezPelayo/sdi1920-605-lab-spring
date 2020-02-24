@@ -1,6 +1,11 @@
 package com.uniovi.controllers;
 
+import java.util.LinkedList;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -25,8 +30,11 @@ public class TeacherController {
 	private TeachersValidator tv;
 	
 	@RequestMapping("/teacher/list")
-	public String getList(Model model) {
-		model.addAttribute("teacherList", ts.getTeachers());
+	public String getList(Model model, Pageable pageable) {
+		Page<Teacher> teachers = new PageImpl<Teacher>(new LinkedList<Teacher>());
+		teachers = ts.getTeachers(pageable);
+		model.addAttribute("teacherList", teachers.getContent());
+		model.addAttribute("page", teachers);
 		return "teacher/list";
 	}
 	
