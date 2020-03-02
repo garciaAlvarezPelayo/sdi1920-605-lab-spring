@@ -1,5 +1,7 @@
 package com.uniovi.tests.pageobjects;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -24,4 +26,18 @@ public class PO_PrivateView extends PO_NavView {
 		By boton = By.className("btn");
 		driver.findElement(boton).click();
 	}
+
+	public static void log(WebDriver driver, String dni, String passwd) {
+		PO_HomeView.clickOption(driver, "login", "class", "btn btn-primary");
+		// Rellenamos el formulario
+		PO_LoginView.fillForm(driver, dni, passwd);
+		// COmprobamos que entramos en la pagina privada de Alumno
+		PO_View.checkElement(driver, "text", dni);
+	}
+
+	public static void clickElement(WebDriver driver, String type, String xpath, int position) {
+		List<WebElement>elementos = PO_View.checkElement(driver, type, xpath); 
+		elementos.get(position).click();
+	}
+
 }
