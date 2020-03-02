@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="fragments/head" />
+<body>
+
+	<!-- Barra de Navegación superior -->
+<nav th:replace="fragments/nav" />
+
+
+
+	<div class="container">
+		<h2 th:text="#{profesores}">Profesores</h2>
+		<p th:text="#{listadoProfesoresSubTexto}">Los profesores que actualmente figuran en el sistema son las
+			siguientes:</p>
+		<div class="table-responsive">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th class="col-md-1">id</th>
+						<th th:text="#{nombre}">Nombre</th>
+						<th th:text="#{apellidos}">Apellidos</th>
+						<th th:text="#{categoria}">Categoria</th>
+						<th class="col-md-1"></th>
+						<th class="col-md-1"></th>
+						<th class="col-md-1"></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="teacher : ${teacherList}">
+						<td th:text="${teacher.dni}">1</td>
+						<td th:text="${teacher.name}">1</td>
+						<td th:text="${teacher.surname}">1</td>
+						<td th:text="${teacher.category}">1</td>
+						<td><a th:href="${'/teacher/delete/' + teacher.dni}" th:text="#{eliminar}">eliminar</a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<footer th:replace="fragments/pagination" />
+	</div>
+
+<footer th:replace="fragments/footer" />
+</body>
+</html>
